@@ -12,9 +12,7 @@ public class SendEmailJobExecutor implements JobExecutor {
 
     @Override
     public boolean supports(JobEntity job) {
-        return "SEND_EMAIL".equals(
-                job.getPayload().get("task")
-        );
+        return "send_email".equalsIgnoreCase(job.getPayload().get("task").toString());
     }
 
     @Override

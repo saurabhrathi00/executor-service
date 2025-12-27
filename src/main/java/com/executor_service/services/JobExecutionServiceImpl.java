@@ -61,7 +61,6 @@ public class JobExecutionServiceImpl implements JobExecutionService {
             }
         } else {
             job.setStatus(JobStatus.COMPLETED);
-            job.setNextRunAt(null);
         }
         job.setUpdatedAt(now);
         // Transaction will commit here , JPA will flush changes

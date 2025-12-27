@@ -12,9 +12,7 @@ public class GenerateReportJobExecutor implements JobExecutor {
 
     @Override
     public boolean supports(JobEntity job) {
-        return "GENERATE_REPORT".equals(
-                job.getPayload().get("task")
-        );
+        return "generate_report".equalsIgnoreCase(job.getPayload().get("task").toString());
     }
 
     @Override

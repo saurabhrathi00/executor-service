@@ -1,5 +1,6 @@
 package com.executor_service.services.registry;
 
+import com.executor_service.exceptions.JobValidationException;
 import com.executor_service.models.dao.JobEntity;
 import com.executor_service.services.executors.JobExecutor;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +19,7 @@ public class JobExecutorRegistry {
                 .filter(executor -> executor.supports(job))
                 .findFirst()
                 .orElseThrow(() ->
-                        new ResourceNotFoundException(
+                        new JobValidationException(
                                 "No executor found for jobId=" +
                                         job.getJobId()
                         )

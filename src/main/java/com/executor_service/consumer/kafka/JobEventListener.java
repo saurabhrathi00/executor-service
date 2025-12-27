@@ -33,7 +33,6 @@ public class JobEventListener {
             log.error("Permanent job failure jobId={} attempt={}", event.getJobId(), event.getAttempt(), ex);
             jobExecutionService.markFailed(event, ex);
             acknowledgment.acknowledge(); // NO RETRY
-
         } catch (JobTransientException ex) {
             log.warn("Transient job failure, retrying jobId={} attempt={}", event.getJobId(), event.getAttempt(), ex);
             throw ex; // RETRY
